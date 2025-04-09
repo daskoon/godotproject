@@ -1,0 +1,132 @@
+{
+  "price_match": {
+    "title": "Price Match Request",
+    "description": "Customer shows you a competitor's advertisement with a lower price",
+    "customer_type": ["regular", "karen"],
+    "initial_dialogue": "I found this same item cheaper at CompetitorMart. Can you match their price?",
+    "choices": {
+      "check_policy": {
+        "text": "Let me check our price match policy",
+        "response": "Our policy states we can match verified competitor prices. Let me verify this for you.",
+        "effects": {"customer_patience": 10, "manager_annoyance": -5, "self_boredom": 5},
+        "leads_to": "verify_advertisement"
+      },
+      "immediate_deny": {
+        "text": "Sorry, we don't price match",
+        "response": "I apologize, but we don't offer price matching.",
+        "effects": {"customer_patience": -20, "manager_annoyance": 10, "self_boredom": -5},
+        "leads_to": "customer_escalation"
+      },
+      "call_manager": {
+        "text": "Let me get a manager for you",
+        "response": "I'll call a manager to assist you with this request.",
+        "effects": {"customer_patience": 5, "manager_annoyance": 15, "self_boredom": 0},
+        "leads_to": "manager_handling"
+      }
+    }
+  },
+  "return_policy": {
+    "title": "Return Policy Question",
+    "description": "Customer wants to return an item without a receipt",
+    "customer_type": ["regular", "elderly", "karen"],
+    "initial_dialogue": "I want to return this item, but I don't have the receipt anymore.",
+    "choices": {
+      "explain_policy": {
+        "text": "Explain our return policy",
+        "response": "Our policy requires a receipt for returns, but we can offer store credit with valid ID.",
+        "effects": {"customer_patience": 5, "manager_annoyance": -5, "self_boredom": 5},
+        "leads_to": "customer_decision"
+      },
+      "strict_denial": {
+        "text": "No receipt, no return",
+        "response": "I'm sorry, but we can't process any returns without a receipt.",
+        "effects": {"customer_patience": -15, "manager_annoyance": 5, "self_boredom": -5},
+        "leads_to": "customer_upset"
+      },
+      "offer_exception": {
+        "text": "Offer a one-time exception",
+        "response": "I'll make an exception this time, but please keep your receipt for future returns.",
+        "effects": {"customer_patience": 15, "manager_annoyance": 10, "self_boredom": 0},
+        "leads_to": "process_return"
+      }
+    }
+  },
+  "suspicious_activity": {
+    "title": "Suspicious Customer",
+    "description": "You notice a customer behaving suspiciously near electronics",
+    "customer_type": ["suspicious"],
+    "initial_dialogue": "Can I help you find something?",
+    "choices": {
+      "casual_approach": {
+        "text": "Casually offer assistance",
+        "response": "Just wanted to check if you need any help finding what you're looking for.",
+        "effects": {"customer_patience": 0, "manager_annoyance": 0, "self_boredom": 5, "theft_loss": -5},
+        "leads_to": "customer_response"
+      },
+      "direct_confront": {
+        "text": "Directly confront them",
+        "response": "I noticed you've been looking at that item for a while. Is there something specific you need help with?",
+        "effects": {"customer_patience": -10, "manager_annoyance": -5, "self_boredom": -5, "theft_loss": -10},
+        "leads_to": "customer_defensive"
+      },
+      "call_security": {
+        "text": "Call security discreetly",
+        "response": "I'll be right with you. Let me just check on something quickly.",
+        "effects": {"customer_patience": -5, "manager_annoyance": 5, "self_boredom": 0, "theft_loss": -15},
+        "leads_to": "security_response"
+      }
+    }
+  },
+  "product_question": {
+    "title": "Technical Product Question",
+    "description": "Customer has a detailed question about a product",
+    "customer_type": ["regular", "elderly"],
+    "initial_dialogue": "Can you tell me the difference between these two laptop models?",
+    "choices": {
+      "detailed_explanation": {
+        "text": "Give a detailed technical explanation",
+        "response": "The first model has an i5 processor, 8GB RAM, and 256GB SSD, while the second has an i7, 16GB RAM, and 512GB SSD. The i7 is better for multitasking and demanding applications.",
+        "effects": {"customer_patience": 15, "manager_annoyance": -5, "self_boredom": 10},
+        "leads_to": "customer_impressed"
+      },
+      "basic_explanation": {
+        "text": "Give a simple explanation",
+        "response": "The second one is more powerful and has more storage, but it's also more expensive.",
+        "effects": {"customer_patience": 5, "manager_annoyance": 0, "self_boredom": 5},
+        "leads_to": "customer_followup"
+      },
+      "refer_to_specialist": {
+        "text": "Refer to electronics specialist",
+        "response": "Let me get our electronics specialist to explain the differences to you.",
+        "effects": {"customer_patience": 10, "manager_annoyance": 5, "self_boredom": 0},
+        "leads_to": "specialist_explanation"
+      }
+    }
+  },
+  "angry_customer": {
+    "title": "Angry Customer",
+    "description": "Customer is upset about a previous purchase",
+    "customer_type": ["karen", "rushed"],
+    "initial_dialogue": "I bought this TV last week and it's already broken! This is unacceptable!",
+    "choices": {
+      "apologize_help": {
+        "text": "Apologize and offer to help",
+        "response": "I'm very sorry to hear that. Let me see what we can do to resolve this for you right away.",
+        "effects": {"customer_patience": 15, "manager_annoyance": -5, "self_boredom": 5},
+        "leads_to": "troubleshoot_issue"
+      },
+      "defensive_response": {
+        "text": "Defend the product quality",
+        "response": "Our TVs are high quality. It's unusual to have problems so soon. Are you sure you're using it correctly?",
+        "effects": {"customer_patience": -20, "manager_annoyance": 10, "self_boredom": -5},
+        "leads_to": "customer_escalation"
+      },
+      "get_manager": {
+        "text": "Get the manager immediately",
+        "response": "I'll get my manager to assist you with this issue right away.",
+        "effects": {"customer_patience": 10, "manager_annoyance": 15, "self_boredom": 0},
+        "leads_to": "manager_intervention"
+      }
+    }
+  }
+}

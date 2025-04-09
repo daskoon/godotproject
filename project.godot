@@ -1,0 +1,65 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Character",
+"language": "GDScript",
+"path": "res://scripts/character.gd"
+}, {
+"base": "Node",
+"class": "DialogueManager",
+"language": "GDScript",
+"path": "res://scripts/dialogue_manager.gd"
+}, {
+"base": "Node",
+"class": "GameMetrics",
+"language": "GDScript",
+"path": "res://scripts/game_metrics.gd"
+}, {
+"base": "Node",
+"class": "Scenario",
+"language": "GDScript",
+"path": "res://scripts/scenario.gd"
+} ]
+_global_script_class_icons={
+"Character": "",
+"DialogueManager": "",
+"GameMetrics": "",
+"Scenario": ""
+}
+
+[application]
+
+config/name="Big Box Blues"
+run/main_scene="res://scenes/MainMenu.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
